@@ -62,4 +62,4 @@ Windows 自带截图和 QQ/微信截图只是把图片塞进剪贴板，在桌�
 - 剪贴板里同时写 CF_HDROP / CF_DIB / CF_BITMAP / PNG 四种数据，
   所以粘到文件夹、Word、聊天框都能用。
 - 杀毒软件可能对监听剪贴板的程序提示，放行即可。
-- 源码 JieTie.cpp、build.bat 同目录，双击 build.bat 可重新编译（需 B:\mingw64 的 g++）。
+- 源码在 src\JieTie.cpp，双击根目录 build.bat 可重新编译（需 B:\mingw64 的 g++）。

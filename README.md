@@ -2,8 +2,6 @@
 
 截图之后，直接按 `Ctrl+V` 粘到文件夹里，就是一个 PNG 文件。
 
-名字来源很简单：截图的"截"，粘贴的"贴"。
-
 ---
 
 ## 这玩意儿解决什么问题
@@ -11,8 +9,6 @@
 Windows 上截图（`Win+Shift+S`、`PrtSc`、QQ/微信截图）有个老毛病：图片只是进了剪贴板，
 你跑到桌面或资源管理器里按 `Ctrl+V`，什么都粘不出来——因为它不是一个"文件"，Explorer
 只认文件。
-
-以前我的土办法是先把图粘到聊天框，再从聊天框另存，绕一大圈。截贴就是为了省掉这一圈。
 
 它常驻托盘盯着剪贴板。一旦发现里面是图片，就把这张图**补成一个真正的文件**：剪贴板里
 同时存在 `CF_HDROP`（文件）、`CF_DIB` + `CF_BITMAP`（位图）和 `PNG`（原始数据）三种格式。
@@ -39,13 +35,26 @@ Windows 上截图（`Win+Shift+S`、`PrtSc`、QQ/微信截图）有个老毛病�
 
 ## 上手
 
-1. 双击 `JieTie.exe`，右下角托盘出现一个蓝色小相机。
+1. 双击 `bin\JieTie.exe`，右下角托盘出现一个蓝色小相机。
 2. 想截什么就截什么。
 3. 切到桌面或目标文件夹，`Ctrl+V`。
 
 双击托盘图标打开保存文件夹；右键是菜单：三种模式、改保存文件夹、暂停、开机自启、退出。
 
 暂停功能不常用但有用——有时候你只是想把图片复制过去，不希望它落盘，点一下"暂停"就行。
+
+## 目录结构
+
+```
+截贴/
+├─ src/JieTie.cpp        全部源码，单文件
+├─ bin/                  编译产物（已 gitignore），运行时 JieTie.ini 也在这
+├─ docs/使用说明.txt      给不想看 Markdown 的人准备的简版说明
+├─ build.bat             一键编译
+├─ README.md
+├─ LICENSE
+└─ .gitignore / .gitattributes
+```
 
 ## 配置
 
@@ -72,15 +81,16 @@ Paused=0            ; 1 = 启动时暂停
 build.bat
 ```
 
-或者手动来：
+或者手动来（输出到 `bin\`）：
 
 ```bash
+mkdir -p bin
 g++ -municode -mwindows -std=c++17 -O2 -static -static-libgcc -static-libstdc++ \
-    -finput-charset=UTF-8 JieTie.cpp -o JieTie.exe \
+    -finput-charset=UTF-8 src/JieTie.cpp -o bin/JieTie.exe \
     -lgdiplus -lshlwapi -lshell32 -lole32 -luuid -ladvapi32 -lgdi32
 ```
 
-源码就一个 `JieTie.cpp`，纯 Win32 + GDI+。
+源码就一个 `src/JieTie.cpp`，纯 Win32 + GDI+。
 
 ## 里面踩过的坑（想改代码的话值得看一眼）
 

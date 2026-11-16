@@ -47,13 +47,9 @@ Windows 上截图（`Win+Shift+S`、`PrtSc`、QQ/微信截图）有个老毛病�
 
 ```
 截贴/
-├─ src/JieTie.cpp        全部源码，单文件
-├─ bin/                  编译产物（已 gitignore），运行时 JieTie.ini 也在这
-├─ docs/使用说明.txt      给不想看 Markdown 的人准备的简版说明
-├─ build.bat             一键编译
-├─ README.md
-├─ LICENSE
-└─ .gitignore / .gitattributes
+├─ src/JieTie.cpp    全部源码，单文件
+├─ bin/              编译输出（本地生成，不上传）
+└─ README.md
 ```
 
 ## 配置
@@ -76,12 +72,6 @@ Paused=0            ; 1 = 启动时暂停
 ## 从源码编译
 
 只依赖 MinGW-w64 的 g++（>= 8）和系统自带的 GDI+，没有第三方库：
-
-```bat
-build.bat
-```
-
-或者手动来（输出到 `bin\`）：
 
 ```bash
 mkdir -p bin
@@ -126,4 +116,4 @@ WinForms、Office 这类程序用的是 OLE 延迟渲染（delayed rendering）�
 
 ## License
 
-MIT，详见 [LICENSE](LICENSE)。
+MIT。随便用：改、商用、二次分发都行，出了问题别找我。
